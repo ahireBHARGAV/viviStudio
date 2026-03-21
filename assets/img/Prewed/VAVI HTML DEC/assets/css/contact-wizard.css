@@ -1,0 +1,258 @@
+/* Contact Wizard Styles */
+
+/* Wizard Container */
+.wizard-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 400px;
+}
+
+.wizard-step {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.wizard-step.active {
+    display: block;
+    opacity: 1;
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Typography */
+.wizard-header {
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.wizard-title {
+    font-size: 36px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #333; /* Dark text for light background */
+    margin-bottom: 10px;
+}
+
+.wizard-subtitle {
+     font-family: 'Cormorant Garamond', serif; /* Use serif for elegant feel */
+     font-size: 24px;
+     color: #888;
+     font-style: italic;
+     margin-top: 20px;
+ }
+
+/* Form Elements Styling specific to wizard to override defaults if needed or match design */
+.wizard-input-group {
+    margin-bottom: 40px;
+}
+
+.wizard-input-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.wizard-input-col {
+    flex: 1;
+    min-width: 250px;
+}
+
+/* Custom Checkboxes */
+.custom-checkbox-container {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    padding-right: 15px; /* Added right padding for spacing */
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    user-select: none;
+}
+
+.custom-checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #999;
+    background-color: transparent;
+}
+
+.custom-checkbox-container input:checked ~ .checkmark {
+    background-color: #333;
+    border-color: #333;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.custom-checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.custom-checkbox-container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Custom Radio Buttons */
+.custom-radio-container {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    padding-right: 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    user-select: none;
+}
+
+.custom-radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radiomark {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #999;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.custom-radio-container input:checked ~ .radiomark {
+    border-color: #333;
+}
+
+.radiomark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.custom-radio-container input:checked ~ .radiomark:after {
+    display: block;
+}
+
+.custom-radio-container .radiomark:after {
+    top: 4px;
+    left: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #333;
+}
+
+/* Navigation Buttons */
+.wizard-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    align-items: center;
+}
+
+.btn-wizard {
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: color 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-prev {
+    color: #333;
+    font-size: 14px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.btn-next {
+    color: #333;
+    margin-left: auto; /* Push to right if alone */
+}
+
+.btn-submit {
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Override existing input styles for this wizard if necessary to remove bottom border only */
+.wizard-input-wrapper input {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    padding: 10px 0;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.wizard-input-wrapper label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #888;
+}
+
+/* Ensure sections have spacing */
+.wizard-section-title {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .wizard-title {
+        font-size: 28px;
+    }
+    .wizard-subtitle {
+        font-size: 20px;
+    }
+    .wizard-input-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

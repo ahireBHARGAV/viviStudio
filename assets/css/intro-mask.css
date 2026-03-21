@@ -1,0 +1,77 @@
+/* Intro Overlay Styles */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700&display=swap');
+
+@property --o {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: true;
+}
+
+#intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999999;
+  /* Highest priority */
+  margin: 0;
+
+  /* The black overlay that fades out */
+  background:
+    conic-gradient(rgb(0 0 0/var(--o)) 0 0),
+    url('../img/bgbg.png') 30%/cover no-repeat;
+
+  /* Animation for the background fade */
+  /* Animation for the background fade */
+  animation: --o 0.8s forwards ease-in 1.5s;
+
+  /* Flex/Grid checking */
+  display: grid;
+  place-items: center;
+  place-content: center;
+  overflow: hidden;
+}
+
+/* Keyframe for the custom property text-mask fade */
+@keyframes --o {
+  to {
+    --o: 0;
+  }
+}
+
+.intro-mask {
+  position: absolute;
+  /* Relative to overlay */
+  inset: 0;
+  display: grid;
+  place-items: center;
+  place-content: center;
+  font: bold 5vmax 'Montserrat', sans-serif;
+
+  /* Image masking mechanism */
+  background: url('../img/bgbg.png') 50%/cover no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #0000;
+  -webkit-text-fill-color: #0000;
+
+  /* Initial state */
+  scale: 2;
+  animation: reveal 0.8s forwards ease-in 1.5s;
+}
+
+@keyframes reveal {
+  to {
+    scale: 1;
+    font-size: 180vmax;
+    /* Massive zoom effect */
+  }
+}
+
+/* Helper to fade out the entire overlay wrapper when done */
+#intro-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-out;
+}
