@@ -119,3 +119,27 @@ pricing
 hamburger
 wp
 insta link
+
+-----------------------------------
+yes apply this font to texts
+form 
+
+product.html
+
+"Elevate Your Brand with Powerful Product Imagery"
+"OUR EXPERTIES"
+"OUR APPROCH"
+
+from 
+
+portfolio-Showcase.html
+
+"Portfolio Excellence: Portraits, Reels & Editorials"
+"OUR EXPERTIES"
+"CREATIVE VISION x TECHNICAL MASTRY"
+
+from 
+
+wedding.html
+
+"EVERY WEDDING DESERVS A CINEMATIC CELEBRATION"
