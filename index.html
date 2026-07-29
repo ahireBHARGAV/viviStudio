@@ -35,6 +35,78 @@
     </link>
     </link>
     </link>
+    <style>
+        .floating-socials {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 12px;
+            z-index: 9999;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        .floating-socials:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+            transform: translateY(-2px);
+        }
+        .floating-socials .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 18px;
+            background: rgba(0, 0, 0, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+        }
+        .floating-socials .social-icon:hover {
+            transform: scale(1.15);
+            color: #fff;
+        }
+        .floating-socials .social-icon.instagram:hover {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aec 90%);
+            box-shadow: 0 0 15px rgba(214, 36, 159, 0.5);
+        }
+        .floating-socials .social-icon.whatsapp:hover {
+            background: #25D366;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.5);
+        }
+        .floating-socials .social-icon.google:hover {
+            background: #4285F4;
+            box-shadow: 0 0 15px rgba(66, 133, 244, 0.5);
+        }
+        .floating-socials .social-icon.youtube:hover {
+            background: #FF0000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+        
+        /* Mobile adjustment */
+        @media (max-width: 767px) {
+            .floating-socials {
+                bottom: 20px;
+                right: 20px;
+                padding: 8px 12px;
+                gap: 8px;
+            }
+            .floating-socials .social-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 
 <body class="fonts-aesthetic">
@@ -105,6 +177,8 @@
                                     target="_blank"><i class="fa fa-whatsapp"></i></a>
                                 <a class="entry" href="https://share.google/KsFaWvUEdi8qOIjIC"><i
                                         class="fa fa-google"></i></a>
+                                <a class="entry" href="https://www.youtube.com/channel/UCjlL9fmUwuesODz2xyZZnQw" target="_blank"><i
+                                        class="fa fa-youtube-play"></i></a>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-5 col-xs-b30 col-sm-0" style="display:flex; align-items:stretch;">
@@ -168,6 +242,8 @@
                                     target="_blank"><i class="fa fa-whatsapp"></i></a>
                                 <a class="entry" href="https://share.google/KsFaWvUEdi8qOIjIC"><i
                                         class="fa fa-google"></i></a>
+                                <a class="entry" href="https://www.youtube.com/channel/UCjlL9fmUwuesODz2xyZZnQw" target="_blank"><i
+                                        class="fa fa-youtube-play"></i></a>
                             </div>
                         </div>
                         <div class="hamburger-icon open-overlay" data-rel="1">
@@ -323,6 +399,21 @@
     <script src="assets/js/intro-loader.js"></script>
     <script src="assets/js/global.js"></script>
     <script src="assets/js/tiltfx.js"></script>
+    <!-- FLOATING SOCIALS -->
+    <div class="floating-socials">
+        <a href="https://www.instagram.com/" target="_blank" class="social-icon instagram" title="Instagram">
+            <i class="fa fa-instagram"></i>
+        </a>
+        <a href="https://api.whatsapp.com/send/?phone=919356404645&text&type=phone_number&app_absent=0&partnertoken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJodHRwczovL3dhLm1lLzkxOTM1NjQwNDY0NSIsImlhdCI6MTc3MzQxNTIxNiwiaXNzIjoiR29vZ2xlIiwiZXhwIjoxNzczNDE1NTE2fQ.A58utgi-QmEnsHgW72_4VnWwLWU0_Drny7gHo3WCqpzgWPMZZUNSA28khQ-KctWBws7wYc70rnVhgiiMXpJonA&wame_ctl=1" target="_blank" class="social-icon whatsapp" title="WhatsApp">
+            <i class="fa fa-whatsapp"></i>
+        </a>
+        <a href="https://share.google/KsFaWvUEdi8qOIjIC" target="_blank" class="social-icon google" title="Google Share">
+            <i class="fa fa-google"></i>
+        </a>
+        <a href="https://www.youtube.com/channel/UCjlL9fmUwuesODz2xyZZnQw" target="_blank" class="social-icon youtube" title="YouTube">
+            <i class="fa fa-youtube-play"></i>
+        </a>
+    </div>
 </body>
 
 </html>
