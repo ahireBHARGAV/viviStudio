@@ -184,214 +184,432 @@
             <div class="empty-space col-xs-b35 col-sm-b70"></div>
             
             <style>
-                .roadmap-container {
+                .events-flow-section {
                     position: relative;
-                    max-width: 800px;
+                    max-width: 960px;
                     margin: 0 auto;
-                    padding: 20px 15px;
+                    padding: 40px 20px;
                 }
-                .roadmap-timeline {
+
+                /* Central Dynamic Progress Line */
+                .events-flow-line-bg {
                     position: absolute;
-                    left: 30px;
-                    top: 20px;
-                    bottom: 20px;
-                    width: 2px;
-                    background: rgba(0, 0, 0, 0.15); 
+                    left: 28px;
+                    top: 40px;
+                    bottom: 40px;
+                    width: 3px;
+                    background: rgba(0, 0, 0, 0.08);
+                    border-radius: 3px;
                 }
+
+                .events-flow-line-progress {
+                    position: absolute;
+                    left: 28px;
+                    top: 40px;
+                    width: 3px;
+                    height: 0%;
+                    background: linear-gradient(180deg, #111111 0%, #555555 50%, #111111 100%);
+                    border-radius: 3px;
+                    transition: height 0.15s ease-out;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+                }
+
                 @media (min-width: 768px) {
-                    .roadmap-timeline {
+                    .events-flow-line-bg {
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+
+                    .events-flow-line-progress {
                         left: 50%;
                         transform: translateX(-50%);
                     }
                 }
-                .roadmap-item {
+
+                /* Flow Card Items */
+                .event-flow-item {
                     position: relative;
-                    margin-bottom: 30px;
-                    padding-left: 50px;
-                    opacity: 0;
-                    transform: translateY(30px);
-                    transition: all 0.8s ease-out;
+                    margin-bottom: 45px;
                     width: 100%;
+                    padding-left: 65px;
+                    opacity: 0;
+                    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
                 }
-                .roadmap-item.visible-reveal {
+
+                .event-flow-item.slide-from-left {
+                    transform: translateX(-40px);
+                }
+
+                .event-flow-item.slide-from-right {
+                    transform: translateX(40px);
+                }
+
+                @media (max-width: 767px) {
+                    .event-flow-item.slide-from-left,
+                    .event-flow-item.slide-from-right {
+                        transform: translateY(30px);
+                    }
+                }
+
+                .event-flow-item.is-visible {
                     opacity: 1;
-                    transform: translateY(0);
+                    transform: translate(0, 0) !important;
                 }
+
                 @media (min-width: 768px) {
-                    .roadmap-item {
+                    .event-flow-item {
                         width: 50%;
                         padding-left: 0;
                     }
-                    .roadmap-item:nth-child(even) {
-                        margin-left: auto;
-                        padding-left: 40px;
+
+                    .event-flow-item:nth-child(odd) {
+                        padding-right: 45px;
+                        text-align: right;
                     }
-                    .roadmap-item:nth-child(odd) {
-                        padding-right: 40px;
+
+                    .event-flow-item:nth-child(even) {
+                        margin-left: auto;
+                        padding-left: 45px;
+                        text-align: left;
+                    }
+                }
+
+                /* Center Dot Badge */
+                .event-flow-node {
+                    position: absolute;
+                    left: 18px;
+                    top: 24px;
+                    width: 22px;
+                    height: 22px;
+                    border-radius: 50%;
+                    background: #ffffff;
+                    border: 3px solid #cccccc;
+                    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9);
+                    z-index: 2;
+                    transition: all 0.5s ease;
+                }
+
+                .event-flow-item.is-visible .event-flow-node {
+                    border-color: #111111;
+                    background: #111111;
+                    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+                }
+
+                @media (min-width: 768px) {
+                    .event-flow-item:nth-child(odd) .event-flow-node {
+                        left: auto;
+                        right: -11px;
+                    }
+
+                    .event-flow-item:nth-child(even) .event-flow-node {
+                        left: -11px;
+                    }
+                }
+
+                /* Card Design */
+                .event-flow-card {
+                    background: #ffffff;
+                    border-radius: 12px;
+                    padding: 24px 28px;
+                    border: 1px solid rgba(0, 0, 0, 0.07);
+                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+                    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                    position: relative;
+                    overflow: hidden;
+                    text-align: left;
+                }
+
+                @media (min-width: 768px) {
+                    .event-flow-item:nth-child(odd) .event-flow-card {
                         text-align: right;
                     }
                 }
-                .roadmap-dot {
+
+                .event-flow-card::before {
+                    content: '';
                     position: absolute;
-                    left: 10px;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    width: 12px;
-                    height: 12px;
-                    background: #111;
-                    border-radius: 50%;
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                    z-index: 1;
+                    top: 0;
+                    left: 0;
+                    width: 4px;
+                    height: 100%;
+                    background: #111111;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
                 }
+
                 @media (min-width: 768px) {
-                    .roadmap-dot {
-                        left: 100%;
-                        transform: translate(-50%, -50%);
-                    }
-                    .roadmap-item:nth-child(even) .roadmap-dot {
-                        left: 0%;
-                        transform: translate(-50%, -50%);
+                    .event-flow-item:nth-child(odd) .event-flow-card::before {
+                        left: auto;
+                        right: 0;
                     }
                 }
-                .roadmap-content {
-                    background: rgba(0, 0, 0, 0.03);
-                    padding: 20px 25px;
-                    border-radius: 8px;
-                    border: 1px solid rgba(0, 0, 0, 0.08);
-                    backdrop-filter: blur(4px);
+
+                .event-flow-card:hover {
+                    transform: translateY(-6px);
+                    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.1);
+                    border-color: rgba(0, 0, 0, 0.12);
+                }
+
+                .event-flow-card:hover::before {
+                    opacity: 1;
+                }
+
+                .event-flow-header {
                     display: flex;
                     align-items: center;
-                    min-height: 80px;
+                    gap: 12px;
+                    margin-bottom: 8px;
                 }
+
                 @media (min-width: 768px) {
-                    .roadmap-item:nth-child(odd) .roadmap-content {
-                        justify-content: flex-end;
-                        text-align: right;
+                    .event-flow-item:nth-child(odd) .event-flow-header {
+                        flex-direction: row-reverse;
                     }
                 }
-                .roadmap-content h4 {
+
+                .event-flow-icon {
+                    width: 38px;
+                    height: 38px;
+                    border-radius: 50%;
+                    background: rgba(0, 0, 0, 0.04);
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 16px;
+                    color: #111;
+                    flex-shrink: 0;
+                    transition: all 0.4s ease;
+                }
+
+                .event-flow-card:hover .event-flow-icon {
+                    background: #111111;
+                    color: #ffffff;
+                    transform: rotate(360deg);
+                }
+
+                .event-flow-number {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 11px;
+                    font-weight: 700;
+                    letter-spacing: 2px;
+                    color: #999999;
+                    text-transform: uppercase;
+                }
+
+                .event-flow-card h4 {
+                    font-family: 'Cormorant Garamond', serif;
+                    font-size: 22px;
+                    font-weight: 700 !important;
+                    color: #111111 !important;
                     margin: 0;
-                    font-size: 1.25rem;
-                    line-height: 1.4;
-                    color: #000 !important;
+                    line-height: 1.2;
+                }
+
+                .event-flow-desc {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 13px;
+                    color: #666666;
+                    margin-top: 8px;
+                    line-height: 1.5;
                 }
             </style>
-            
-            <div class="roadmap-container light-cursor-area">
-                <div class="roadmap-timeline"></div>
-                
-                <div class="roadmap-item">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <h4 class="h4 light" style="font-family: 'Cormorant Garamond', serif; font-weight: 800 !important;">Cultural &amp; Religious Events</h4>
+
+            <div class="events-flow-section light-cursor-area">
+                <div class="events-flow-line-bg"></div>
+                <div class="events-flow-line-progress"></div>
+
+                <!-- Item 1 -->
+                <div class="event-flow-item slide-from-left">
+                    <div class="event-flow-node"></div>
+                    <div class="event-flow-card">
+                        <div class="event-flow-header">
+                            <div class="event-flow-icon"><i class="fa fa-sun-o"></i></div>
+                            <div class="event-flow-number">01 / EVENT</div>
+                        </div>
+                        <h4>Cultural &amp; Religious Events</h4>
+                        <div class="event-flow-desc">Preserving rituals, sacred traditions, and vibrant cultural ceremonies with deep reverence.</div>
                     </div>
                 </div>
-                
-                <div class="roadmap-item">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <h4 class="h4 light" style="font-family: 'Cormorant Garamond', serif; font-weight: 800 !important;">Concerts &amp; Live Shows</h4>
+
+                <!-- Item 2 -->
+                <div class="event-flow-item slide-from-right">
+                    <div class="event-flow-node"></div>
+                    <div class="event-flow-card">
+                        <div class="event-flow-header">
+                            <div class="event-flow-icon"><i class="fa fa-music"></i></div>
+                            <div class="event-flow-number">02 / EVENT</div>
+                        </div>
+                        <h4>Concerts &amp; Live Shows</h4>
+                        <div class="event-flow-desc">Capturing high-octane stage performances, electric lighting, and crowd enthusiasm.</div>
                     </div>
                 </div>
-                
-                <div class="roadmap-item">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <h4 class="h4 light" style="font-family: 'Cormorant Garamond', serif; font-weight: 800 !important;">Birthday &amp; Private Parties</h4>
+
+                <!-- Item 3 -->
+                <div class="event-flow-item slide-from-left">
+                    <div class="event-flow-node"></div>
+                    <div class="event-flow-card">
+                        <div class="event-flow-header">
+                            <div class="event-flow-icon"><i class="fa fa-glass"></i></div>
+                            <div class="event-flow-number">03 / EVENT</div>
+                        </div>
+                        <h4>Birthday &amp; Private Parties</h4>
+                        <div class="event-flow-desc">Joyous laughs, milestone moments, and intimate celebrations with loved ones.</div>
                     </div>
                 </div>
-                
-                <div class="roadmap-item">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <h4 class="h4 light" style="font-family: 'Cormorant Garamond', serif; font-weight: 800 !important;">Social Gatherings &amp; Celebrations</h4>
+
+                <!-- Item 4 -->
+                <div class="event-flow-item slide-from-right">
+                    <div class="event-flow-node"></div>
+                    <div class="event-flow-card">
+                        <div class="event-flow-header">
+                            <div class="event-flow-icon"><i class="fa fa-users"></i></div>
+                            <div class="event-flow-number">04 / EVENT</div>
+                        </div>
+                        <h4>Social Gatherings &amp; Celebrations</h4>
+                        <div class="event-flow-desc">Candid smiles, togetherness, and heartfelt connections documented naturally.</div>
                     </div>
                 </div>
-                
-                <div class="roadmap-item">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <h4 class="h4 light" style="font-family: 'Cormorant Garamond', serif; font-weight: 800 !important;">Festive Events</h4>
+
+                <!-- Item 5 -->
+                <div class="event-flow-item slide-from-left">
+                    <div class="event-flow-node"></div>
+                    <div class="event-flow-card">
+                        <div class="event-flow-header">
+                            <div class="event-flow-icon"><i class="fa fa-gift"></i></div>
+                            <div class="event-flow-number">05 / EVENT</div>
+                        </div>
+                        <h4>Festive Events</h4>
+                        <div class="event-flow-desc">Rich colors, festive warmth, and seasonal traditions framed cinematically.</div>
                     </div>
                 </div>
-                
-                <div class="roadmap-item">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <h4 class="h4 light" style="font-family: 'Cormorant Garamond', serif; font-weight: 800 !important;">College Events &amp; Youth Festivals</h4>
+
+                <!-- Item 6 -->
+                <div class="event-flow-item slide-from-right">
+                    <div class="event-flow-node"></div>
+                    <div class="event-flow-card">
+                        <div class="event-flow-header">
+                            <div class="event-flow-icon"><i class="fa fa-graduation-cap"></i></div>
+                            <div class="event-flow-number">06 / EVENT</div>
+                        </div>
+                        <h4>College Events &amp; Youth Festivals</h4>
+                        <div class="event-flow-desc">Youthful energy, dynamic campus competitions, and vibrant student performances.</div>
                     </div>
                 </div>
-                
-                <div class="roadmap-item">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <h4 class="h4 light" style="font-family: 'Cormorant Garamond', serif; font-weight: 800 !important;">DJ Nights &amp; Club Events</h4>
+
+                <!-- Item 7 -->
+                <div class="event-flow-item slide-from-left">
+                    <div class="event-flow-node"></div>
+                    <div class="event-flow-card">
+                        <div class="event-flow-header">
+                            <div class="event-flow-icon"><i class="fa fa-headphones"></i></div>
+                            <div class="event-flow-number">07 / EVENT</div>
+                        </div>
+                        <h4>DJ Nights &amp; Club Events</h4>
+                        <div class="event-flow-desc">Pulsating dance floors, glowing neon vibes, and night life excitement.</div>
                     </div>
                 </div>
-                
-                <div class="roadmap-item">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <h4 class="h4 light" style="font-family: 'Cormorant Garamond', serif; font-weight: 800 !important;">Stage Performances &amp; Competitions</h4>
+
+                <!-- Item 8 -->
+                <div class="event-flow-item slide-from-right">
+                    <div class="event-flow-node"></div>
+                    <div class="event-flow-card">
+                        <div class="event-flow-header">
+                            <div class="event-flow-icon"><i class="fa fa-trophy"></i></div>
+                            <div class="event-flow-number">08 / EVENT</div>
+                        </div>
+                        <h4>Stage Performances &amp; Competitions</h4>
+                        <div class="event-flow-desc">Highlighting artistic expression, dramatic stage presence, and winning moments.</div>
                     </div>
                 </div>
-                
-                <div class="roadmap-item">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <h4 class="h4 light" style="font-family: 'Cormorant Garamond', serif; font-weight: 800 !important;">Baby shoot outdoor</h4>
+
+                <!-- Item 9 -->
+                <div class="event-flow-item slide-from-left">
+                    <div class="event-flow-node"></div>
+                    <div class="event-flow-card">
+                        <div class="event-flow-header">
+                            <div class="event-flow-icon"><i class="fa fa-heartbeat"></i></div>
+                            <div class="event-flow-number">09 / EVENT</div>
+                        </div>
+                        <h4>Baby Shoot Outdoor</h4>
+                        <div class="event-flow-desc">Playful, adorable portraits of your little ones amidst natural scenic outdoor backdrops.</div>
                     </div>
                 </div>
-                
-                <div class="roadmap-item">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <h4 class="h4 light" style="font-family: 'Cormorant Garamond', serif; font-weight: 800 !important;">Maternity</h4>
+
+                <!-- Item 10 -->
+                <div class="event-flow-item slide-from-right">
+                    <div class="event-flow-node"></div>
+                    <div class="event-flow-card">
+                        <div class="event-flow-header">
+                            <div class="event-flow-icon"><i class="fa fa-heart"></i></div>
+                            <div class="event-flow-number">10 / EVENT</div>
+                        </div>
+                        <h4>Maternity</h4>
+                        <div class="event-flow-desc">Celebrating new beginnings with soft, glowing, and timeless fine-art portraits.</div>
                     </div>
                 </div>
-                
-                <div class="roadmap-item">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <h4 class="h4 light" style="font-family: 'Cormorant Garamond', serif; font-weight: 800 !important;">Post wedding</h4>
+
+                <!-- Item 11 -->
+                <div class="event-flow-item slide-from-left">
+                    <div class="event-flow-node"></div>
+                    <div class="event-flow-card">
+                        <div class="event-flow-header">
+                            <div class="event-flow-icon"><i class="fa fa-camera-retro"></i></div>
+                            <div class="event-flow-number">11 / EVENT</div>
+                        </div>
+                        <h4>Post Wedding</h4>
+                        <div class="event-flow-desc">Relaxed, romantic couple sessions after the wedding day whirlwind.</div>
                     </div>
                 </div>
-                
-                <div class="roadmap-item">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <h4 class="h4 light" style="font-family: 'Cormorant Garamond', serif; font-weight: 800 !important;">Corporate events</h4>
+
+                <!-- Item 12 -->
+                <div class="event-flow-item slide-from-right">
+                    <div class="event-flow-node"></div>
+                    <div class="event-flow-card">
+                        <div class="event-flow-header">
+                            <div class="event-flow-icon"><i class="fa fa-briefcase"></i></div>
+                            <div class="event-flow-number">12 / EVENT</div>
+                        </div>
+                        <h4>Corporate Events</h4>
+                        <div class="event-flow-desc">Polished, professional coverage of summits, product launches, and gala dinners.</div>
                     </div>
                 </div>
-                
+
             </div>
-            
+
             <script>
-                (function() {
-                    var items = document.querySelectorAll('.roadmap-item');
-                    
-                    function checkReveal() {
-                        var triggerBottom = window.innerHeight * 0.95; // Trigger at 95% of viewport height
-                        items.forEach(function(item) {
-                            var itemTop = item.getBoundingClientRect().top;
-                            if (itemTop < triggerBottom) {
-                                item.classList.add('visible-reveal');
+                (function () {
+                    var items = document.querySelectorAll('.event-flow-item');
+                    var progressLine = document.querySelector('.events-flow-line-progress');
+                    var container = document.querySelector('.events-flow-section');
+
+                    function updateProgress() {
+                        if (!container || !progressLine) return;
+                        var rect = container.getBoundingClientRect();
+                        var viewportHeight = window.innerHeight;
+
+                        var containerTop = rect.top;
+                        var containerHeight = rect.height;
+
+                        var progress = (viewportHeight * 0.7 - containerTop) / containerHeight;
+                        progress = Math.max(0, Math.min(1, progress));
+                        progressLine.style.height = (progress * 100) + '%';
+
+                        items.forEach(function (item) {
+                            var itemRect = item.getBoundingClientRect();
+                            if (itemRect.top < viewportHeight * 0.88) {
+                                item.classList.add('is-visible');
                             }
                         });
                     }
 
-                    // Check immediately on load for any elements already visible in viewport
-                    setTimeout(checkReveal, 200); 
-                    
-                    // Reliably process reveals natively on scroll
-                    window.addEventListener('scroll', function() {
-                        requestAnimationFrame(checkReveal);
+                    window.addEventListener('scroll', function () {
+                        requestAnimationFrame(updateProgress);
                     });
-                    
-                    // Refresh positions if window layout changes
-                    window.addEventListener('resize', function() {
-                        requestAnimationFrame(checkReveal);
+                    window.addEventListener('resize', function () {
+                        requestAnimationFrame(updateProgress);
                     });
+
+                    setTimeout(updateProgress, 100);
                 })();
             </script>
 
