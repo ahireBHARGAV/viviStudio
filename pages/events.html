@@ -175,29 +175,21 @@
         </div>
 
             <style>
-                .sticky-events-wrapper {
-                    position: relative;
-                    width: 100%;
-                    height: 320vh;
+                #content-block {
+                    overflow: visible !important;
                 }
 
-                .sticky-events-pinned {
-                    position: sticky;
-                    top: 0;
-                    height: 100vh;
+                .locked-events-section {
+                    position: relative;
                     width: 100%;
+                    padding: 80px 0;
                     overflow: hidden;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    background: transparent;
+                    background: #efefef;
                 }
 
                 .events-section-header {
                     text-align: center;
-                    margin-bottom: 25px;
-                    z-index: 10;
+                    margin-bottom: 35px;
                 }
 
                 .events-cards-viewport {
@@ -212,14 +204,14 @@
                     padding: 20px 8vw;
                     width: max-content;
                     will-change: transform;
-                    transition: transform 0.08s ease-out;
+                    transition: transform 0.12s cubic-bezier(0.1, 0.9, 0.2, 1);
                 }
 
                 /* Horizontal Floating Card Block */
                 .event-block-card {
                     flex: 0 0 340px;
                     width: 340px;
-                    min-height: 300px;
+                    min-height: 310px;
                     background: #ffffff;
                     border-radius: 18px;
                     padding: 36px 30px;
@@ -320,40 +312,47 @@
                     line-height: 1.55;
                 }
 
-                /* Progress Bar Indicator */
-                .sticky-scroll-progress-bar {
-                    width: 220px;
-                    height: 3px;
+                /* Progress Indicator */
+                .events-scroll-indicator {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    margin-top: 35px;
+                }
+
+                .events-progress-bar {
+                    width: 240px;
+                    height: 4px;
                     background: rgba(0, 0, 0, 0.08);
-                    border-radius: 3px;
-                    margin-top: 30px;
+                    border-radius: 4px;
                     position: relative;
                     overflow: hidden;
                 }
 
-                .sticky-scroll-progress-fill {
+                .events-progress-fill {
                     position: absolute;
                     left: 0;
                     top: 0;
                     height: 100%;
                     width: 0%;
                     background: #111111;
-                    border-radius: 3px;
-                    transition: width 0.1s linear;
+                    border-radius: 4px;
+                    transition: width 0.15s ease-out;
                 }
 
-                /* Mobile Responsiveness */
+                .events-scroll-hint {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 11px;
+                    font-weight: 600;
+                    letter-spacing: 1.5px;
+                    color: #777777;
+                    text-transform: uppercase;
+                }
+
+                /* Mobile optimization */
                 @media (max-width: 767px) {
-                    .sticky-events-wrapper {
-                        height: auto;
-                    }
-
-                    .sticky-events-pinned {
-                        position: relative;
-                        height: auto;
-                        padding: 40px 0;
-                    }
-
                     .events-cards-viewport {
                         overflow-x: auto;
                         scrollbar-width: none;
@@ -377,231 +376,299 @@
                         padding: 24px 22px;
                     }
 
-                    .sticky-scroll-progress-bar {
+                    .events-scroll-indicator {
                         display: none;
                     }
                 }
             </style>
 
-            <div class="sticky-events-wrapper light-cursor-area">
-                <div class="sticky-events-pinned">
+            <div class="locked-events-section light-cursor-area">
 
-                    <div class="events-section-header">
-                        <div class="h2 small"><b style="font-family: 'Cormorant Garamond', serif; font-weight: 800 !important; line-height: 1em;">EVENTS WE COVER</b></div>
-                        <div class="title-line"><span></span></div>
-                    </div>
-
-                    <div class="events-cards-viewport">
-                        <div class="events-cards-track">
-
-                            <!-- Block 1 -->
-                            <div class="event-block-card">
-                                <div class="event-watermark-num">01</div>
-                                <div class="event-card-top">
-                                    <div class="event-card-icon"><i class="fa fa-sun-o"></i></div>
-                                    <div class="event-tag-label">01 / EVENT</div>
-                                </div>
-                                <div class="event-card-body">
-                                    <h4>Cultural &amp; Religious Events</h4>
-                                    <p>Preserving rituals, sacred traditions, and vibrant cultural ceremonies with deep reverence.</p>
-                                </div>
-                            </div>
-
-                            <!-- Block 2 -->
-                            <div class="event-block-card">
-                                <div class="event-watermark-num">02</div>
-                                <div class="event-card-top">
-                                    <div class="event-card-icon"><i class="fa fa-music"></i></div>
-                                    <div class="event-tag-label">02 / EVENT</div>
-                                </div>
-                                <div class="event-card-body">
-                                    <h4>Concerts &amp; Live Shows</h4>
-                                    <p>Capturing high-octane stage performances, electric lighting, and crowd enthusiasm.</p>
-                                </div>
-                            </div>
-
-                            <!-- Block 3 -->
-                            <div class="event-block-card">
-                                <div class="event-watermark-num">03</div>
-                                <div class="event-card-top">
-                                    <div class="event-card-icon"><i class="fa fa-glass"></i></div>
-                                    <div class="event-tag-label">03 / EVENT</div>
-                                </div>
-                                <div class="event-card-body">
-                                    <h4>Birthday &amp; Private Parties</h4>
-                                    <p>Joyous laughs, milestone moments, and intimate celebrations with loved ones.</p>
-                                </div>
-                            </div>
-
-                            <!-- Block 4 -->
-                            <div class="event-block-card">
-                                <div class="event-watermark-num">04</div>
-                                <div class="event-card-top">
-                                    <div class="event-card-icon"><i class="fa fa-users"></i></div>
-                                    <div class="event-tag-label">04 / EVENT</div>
-                                </div>
-                                <div class="event-card-body">
-                                    <h4>Social Gatherings</h4>
-                                    <p>Candid smiles, togetherness, and heartfelt connections documented naturally.</p>
-                                </div>
-                            </div>
-
-                            <!-- Block 5 -->
-                            <div class="event-block-card">
-                                <div class="event-watermark-num">05</div>
-                                <div class="event-card-top">
-                                    <div class="event-card-icon"><i class="fa fa-gift"></i></div>
-                                    <div class="event-tag-label">05 / EVENT</div>
-                                </div>
-                                <div class="event-card-body">
-                                    <h4>Festive Events</h4>
-                                    <p>Rich colors, festive warmth, and seasonal traditions framed cinematically.</p>
-                                </div>
-                            </div>
-
-                            <!-- Block 6 -->
-                            <div class="event-block-card">
-                                <div class="event-watermark-num">06</div>
-                                <div class="event-card-top">
-                                    <div class="event-card-icon"><i class="fa fa-graduation-cap"></i></div>
-                                    <div class="event-tag-label">06 / EVENT</div>
-                                </div>
-                                <div class="event-card-body">
-                                    <h4>College &amp; Youth Fests</h4>
-                                    <p>Youthful energy, dynamic campus competitions, and student performances.</p>
-                                </div>
-                            </div>
-
-                            <!-- Block 7 -->
-                            <div class="event-block-card">
-                                <div class="event-watermark-num">07</div>
-                                <div class="event-card-top">
-                                    <div class="event-card-icon"><i class="fa fa-headphones"></i></div>
-                                    <div class="event-tag-label">07 / EVENT</div>
-                                </div>
-                                <div class="event-card-body">
-                                    <h4>DJ Nights &amp; Club Events</h4>
-                                    <p>Pulsating dance floors, glowing neon vibes, and night life excitement.</p>
-                                </div>
-                            </div>
-
-                            <!-- Block 8 -->
-                            <div class="event-block-card">
-                                <div class="event-watermark-num">08</div>
-                                <div class="event-card-top">
-                                    <div class="event-card-icon"><i class="fa fa-trophy"></i></div>
-                                    <div class="event-tag-label">08 / EVENT</div>
-                                </div>
-                                <div class="event-card-body">
-                                    <h4>Stage Performances</h4>
-                                    <p>Highlighting artistic expression, dramatic stage presence, and winning moments.</p>
-                                </div>
-                            </div>
-
-                            <!-- Block 9 -->
-                            <div class="event-block-card">
-                                <div class="event-watermark-num">09</div>
-                                <div class="event-card-top">
-                                    <div class="event-card-icon"><i class="fa fa-heartbeat"></i></div>
-                                    <div class="event-tag-label">09 / EVENT</div>
-                                </div>
-                                <div class="event-card-body">
-                                    <h4>Baby Shoot Outdoor</h4>
-                                    <p>Playful, adorable portraits of your little ones amidst natural scenic backdrops.</p>
-                                </div>
-                            </div>
-
-                            <!-- Block 10 -->
-                            <div class="event-block-card">
-                                <div class="event-watermark-num">10</div>
-                                <div class="event-card-top">
-                                    <div class="event-card-icon"><i class="fa fa-heart"></i></div>
-                                    <div class="event-tag-label">10 / EVENT</div>
-                                </div>
-                                <div class="event-card-body">
-                                    <h4>Maternity Sessions</h4>
-                                    <p>Celebrating new beginnings with soft, glowing, and timeless fine-art portraits.</p>
-                                </div>
-                            </div>
-
-                            <!-- Block 11 -->
-                            <div class="event-block-card">
-                                <div class="event-watermark-num">11</div>
-                                <div class="event-card-top">
-                                    <div class="event-card-icon"><i class="fa fa-camera-retro"></i></div>
-                                    <div class="event-tag-label">11 / EVENT</div>
-                                </div>
-                                <div class="event-card-body">
-                                    <h4>Post Wedding</h4>
-                                    <p>Relaxed, romantic couple sessions after the wedding day whirlwind.</p>
-                                </div>
-                            </div>
-
-                            <!-- Block 12 -->
-                            <div class="event-block-card">
-                                <div class="event-watermark-num">12</div>
-                                <div class="event-card-top">
-                                    <div class="event-card-icon"><i class="fa fa-briefcase"></i></div>
-                                    <div class="event-tag-label">12 / EVENT</div>
-                                </div>
-                                <div class="event-card-body">
-                                    <h4>Corporate Events</h4>
-                                    <p>Polished, professional coverage of summits, product launches, and gala dinners.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Progress Bar -->
-                    <div class="sticky-scroll-progress-bar">
-                        <div class="sticky-scroll-progress-fill"></div>
-                    </div>
-
+                <div class="events-section-header">
+                    <div class="h2 small"><b style="font-family: 'Cormorant Garamond', serif; font-weight: 800 !important; line-height: 1em;">EVENTS WE COVER</b></div>
+                    <div class="title-line"><span></span></div>
                 </div>
+
+                <div class="events-cards-viewport">
+                    <div class="events-cards-track">
+
+                        <!-- Block 1 -->
+                        <div class="event-block-card">
+                            <div class="event-watermark-num">01</div>
+                            <div class="event-card-top">
+                                <div class="event-card-icon"><i class="fa fa-sun-o"></i></div>
+                                <div class="event-tag-label">01 / EVENT</div>
+                            </div>
+                            <div class="event-card-body">
+                                <h4>Cultural &amp; Religious Events</h4>
+                                <p>Preserving rituals, sacred traditions, and vibrant cultural ceremonies with deep reverence.</p>
+                            </div>
+                        </div>
+
+                        <!-- Block 2 -->
+                        <div class="event-block-card">
+                            <div class="event-watermark-num">02</div>
+                            <div class="event-card-top">
+                                <div class="event-card-icon"><i class="fa fa-music"></i></div>
+                                <div class="event-tag-label">02 / EVENT</div>
+                            </div>
+                            <div class="event-card-body">
+                                <h4>Concerts &amp; Live Shows</h4>
+                                <p>Capturing high-octane stage performances, electric lighting, and crowd enthusiasm.</p>
+                            </div>
+                        </div>
+
+                        <!-- Block 3 -->
+                        <div class="event-block-card">
+                            <div class="event-watermark-num">03</div>
+                            <div class="event-card-top">
+                                <div class="event-card-icon"><i class="fa fa-glass"></i></div>
+                                <div class="event-tag-label">03 / EVENT</div>
+                            </div>
+                            <div class="event-card-body">
+                                <h4>Birthday &amp; Private Parties</h4>
+                                <p>Joyous laughs, milestone moments, and intimate celebrations with loved ones.</p>
+                            </div>
+                        </div>
+
+                        <!-- Block 4 -->
+                        <div class="event-block-card">
+                            <div class="event-watermark-num">04</div>
+                            <div class="event-card-top">
+                                <div class="event-card-icon"><i class="fa fa-users"></i></div>
+                                <div class="event-tag-label">04 / EVENT</div>
+                            </div>
+                            <div class="event-card-body">
+                                <h4>Social Gatherings</h4>
+                                <p>Candid smiles, togetherness, and heartfelt connections documented naturally.</p>
+                            </div>
+                        </div>
+
+                        <!-- Block 5 -->
+                        <div class="event-block-card">
+                            <div class="event-watermark-num">05</div>
+                            <div class="event-card-top">
+                                <div class="event-card-icon"><i class="fa fa-gift"></i></div>
+                                <div class="event-tag-label">05 / EVENT</div>
+                            </div>
+                            <div class="event-card-body">
+                                <h4>Festive Events</h4>
+                                <p>Rich colors, festive warmth, and seasonal traditions framed cinematically.</p>
+                            </div>
+                        </div>
+
+                        <!-- Block 6 -->
+                        <div class="event-block-card">
+                            <div class="event-watermark-num">06</div>
+                            <div class="event-card-top">
+                                <div class="event-card-icon"><i class="fa fa-graduation-cap"></i></div>
+                                <div class="event-tag-label">06 / EVENT</div>
+                            </div>
+                            <div class="event-card-body">
+                                <h4>College &amp; Youth Fests</h4>
+                                <p>Youthful energy, dynamic campus competitions, and student performances.</p>
+                            </div>
+                        </div>
+
+                        <!-- Block 7 -->
+                        <div class="event-block-card">
+                            <div class="event-watermark-num">07</div>
+                            <div class="event-card-top">
+                                <div class="event-card-icon"><i class="fa fa-headphones"></i></div>
+                                <div class="event-tag-label">07 / EVENT</div>
+                            </div>
+                            <div class="event-card-body">
+                                <h4>DJ Nights &amp; Club Events</h4>
+                                <p>Pulsating dance floors, glowing neon vibes, and night life excitement.</p>
+                            </div>
+                        </div>
+
+                        <!-- Block 8 -->
+                        <div class="event-block-card">
+                            <div class="event-watermark-num">08</div>
+                            <div class="event-card-top">
+                                <div class="event-card-icon"><i class="fa fa-trophy"></i></div>
+                                <div class="event-tag-label">08 / EVENT</div>
+                            </div>
+                            <div class="event-card-body">
+                                <h4>Stage Performances</h4>
+                                <p>Highlighting artistic expression, dramatic stage presence, and winning moments.</p>
+                            </div>
+                        </div>
+
+                        <!-- Block 9 -->
+                        <div class="event-block-card">
+                            <div class="event-watermark-num">09</div>
+                            <div class="event-card-top">
+                                <div class="event-card-icon"><i class="fa fa-heartbeat"></i></div>
+                                <div class="event-tag-label">09 / EVENT</div>
+                            </div>
+                            <div class="event-card-body">
+                                <h4>Baby Shoot Outdoor</h4>
+                                <p>Playful, adorable portraits of your little ones amidst natural scenic backdrops.</p>
+                            </div>
+                        </div>
+
+                        <!-- Block 10 -->
+                        <div class="event-block-card">
+                            <div class="event-watermark-num">10</div>
+                            <div class="event-card-top">
+                                <div class="event-card-icon"><i class="fa fa-heart"></i></div>
+                                <div class="event-tag-label">10 / EVENT</div>
+                            </div>
+                            <div class="event-card-body">
+                                <h4>Maternity Sessions</h4>
+                                <p>Celebrating new beginnings with soft, glowing, and timeless fine-art portraits.</p>
+                            </div>
+                        </div>
+
+                        <!-- Block 11 -->
+                        <div class="event-block-card">
+                            <div class="event-watermark-num">11</div>
+                            <div class="event-card-top">
+                                <div class="event-card-icon"><i class="fa fa-camera-retro"></i></div>
+                                <div class="event-tag-label">11 / EVENT</div>
+                            </div>
+                            <div class="event-card-body">
+                                <h4>Post Wedding</h4>
+                                <p>Relaxed, romantic couple sessions after the wedding day whirlwind.</p>
+                            </div>
+                        </div>
+
+                        <!-- Block 12 -->
+                        <div class="event-block-card">
+                            <div class="event-watermark-num">12</div>
+                            <div class="event-card-top">
+                                <div class="event-card-icon"><i class="fa fa-briefcase"></i></div>
+                                <div class="event-tag-label">12 / EVENT</div>
+                            </div>
+                            <div class="event-card-body">
+                                <h4>Corporate Events</h4>
+                                <p>Polished, professional coverage of summits, product launches, and gala dinners.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Progress Indicator Bar -->
+                <div class="events-scroll-indicator">
+                    <div class="events-progress-bar">
+                        <div class="events-progress-fill"></div>
+                    </div>
+                    <div class="events-scroll-hint">Scroll to explore events</div>
+                </div>
+
             </div>
 
             <script>
                 (function () {
-                    var wrapper = document.querySelector('.sticky-events-wrapper');
+                    var section = document.querySelector('.locked-events-section');
                     var track = document.querySelector('.events-cards-track');
-                    var progressFill = document.querySelector('.sticky-scroll-progress-fill');
+                    var progressFill = document.querySelector('.events-progress-fill');
+                    var scrollHint = document.querySelector('.events-scroll-hint');
 
-                    if (!wrapper || !track) return;
+                    if (!section || !track) return;
 
-                    function handleStickyHorizontalScroll() {
-                        if (window.innerWidth <= 767) return;
+                    var horizontalOffset = 0;
+                    var isLocked = false;
+                    var lockCooldown = false;
 
-                        var wrapperRect = wrapper.getBoundingClientRect();
-                        var viewportHeight = window.innerHeight;
+                    function getMaxScroll() {
+                        var viewportWidth = window.innerWidth;
+                        var trackWidth = track.scrollWidth;
+                        var paddingRight = viewportWidth * 0.08;
+                        var maxScroll = trackWidth - viewportWidth + paddingRight;
+                        return Math.max(0, maxScroll);
+                    }
 
-                        var totalScrollDistance = wrapperRect.height - viewportHeight;
-                        var currentScroll = -wrapperRect.top;
+                    function updateTrack() {
+                        var maxScroll = getMaxScroll();
+                        horizontalOffset = Math.max(0, Math.min(maxScroll, horizontalOffset));
 
-                        var progress = currentScroll / totalScrollDistance;
-                        progress = Math.max(0, Math.min(1, progress));
+                        track.style.transform = 'translate3d(' + (-horizontalOffset) + 'px, 0, 0)';
 
-                        var maxTranslate = track.scrollWidth - window.innerWidth + (window.innerWidth * 0.16);
-                        if (maxTranslate < 0) maxTranslate = 0;
+                        if (progressFill && maxScroll > 0) {
+                            var pct = (horizontalOffset / maxScroll) * 100;
+                            progressFill.style.width = pct.toFixed(1) + '%';
 
-                        var currentTranslate = progress * maxTranslate;
-
-                        track.style.transform = 'translate3d(' + (-currentTranslate) + 'px, 0, 0)';
-
-                        if (progressFill) {
-                            progressFill.style.width = (progress * 100) + '%';
+                            if (scrollHint) {
+                                if (pct >= 98) {
+                                    scrollHint.textContent = "Scroll down to continue";
+                                } else if (pct <= 2) {
+                                    scrollHint.textContent = "Scroll to explore events";
+                                } else {
+                                    scrollHint.textContent = Math.round(pct) + "% explored";
+                                }
+                            }
                         }
                     }
 
-                    window.addEventListener('scroll', function () {
-                        requestAnimationFrame(handleStickyHorizontalScroll);
-                    });
+                    function getSectionTargetY() {
+                        var rect = section.getBoundingClientRect();
+                        var viewportHeight = window.innerHeight;
+                        return window.scrollY + rect.top - (viewportHeight - rect.height) / 2;
+                    }
+
+                    function onWheel(e) {
+                        if (window.innerWidth <= 767) return;
+
+                        var maxScroll = getMaxScroll();
+                        if (maxScroll <= 0) return;
+
+                        var rect = section.getBoundingClientRect();
+                        var viewportHeight = window.innerHeight;
+                        var sectionCenter = rect.top + rect.height / 2;
+                        var screenCenter = viewportHeight / 2;
+
+                        var isCentered = Math.abs(sectionCenter - screenCenter) < 140;
+
+                        if (isCentered && !isLocked && !lockCooldown) {
+                            isLocked = true;
+                            window.scrollTo({ top: getSectionTargetY(), behavior: 'auto' });
+                        }
+
+                        if (isLocked) {
+                            var delta = e.deltaY || e.detail || (-e.wheelDelta);
+
+                            if (delta > 0 && horizontalOffset < maxScroll) {
+                                e.preventDefault();
+                                horizontalOffset += Math.min(delta * 1.5, 130);
+                                updateTrack();
+                                window.scrollTo({ top: getSectionTargetY(), behavior: 'auto' });
+                                return false;
+                            }
+
+                            if (delta < 0 && horizontalOffset > 0) {
+                                e.preventDefault();
+                                horizontalOffset += Math.max(delta * 1.5, -130);
+                                updateTrack();
+                                window.scrollTo({ top: getSectionTargetY(), behavior: 'auto' });
+                                return false;
+                            }
+
+                            if (delta > 0 && horizontalOffset >= maxScroll) {
+                                isLocked = false;
+                                lockCooldown = true;
+                                setTimeout(function () { lockCooldown = false; }, 600);
+                            }
+
+                            if (delta < 0 && horizontalOffset <= 0) {
+                                isLocked = false;
+                                lockCooldown = true;
+                                setTimeout(function () { lockCooldown = false; }, 600);
+                            }
+                        }
+                    }
+
+                    window.addEventListener('wheel', onWheel, { passive: false });
+                    window.addEventListener('mousewheel', onWheel, { passive: false });
 
                     window.addEventListener('resize', function () {
-                        requestAnimationFrame(handleStickyHorizontalScroll);
+                        updateTrack();
                     });
 
-                    setTimeout(handleStickyHorizontalScroll, 100);
+                    updateTrack();
                 })();
             </script>
 
