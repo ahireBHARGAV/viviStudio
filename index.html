@@ -95,10 +95,13 @@
         /* Mobile adjustment */
         @media (max-width: 767px) {
             .floating-socials {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
                 bottom: 20px;
                 right: 20px;
-                padding: 8px 12px;
+                padding: 10px;
                 gap: 8px;
+                border-radius: 16px;
             }
             .floating-socials .social-icon {
                 width: 36px;
