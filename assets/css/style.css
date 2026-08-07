@@ -2406,7 +2406,7 @@ header.type-5 {
   bottom: 0px;
   visibility: hidden;
   opacity: 0;
-  z-index: 11;
+  z-index: 110;
 }
 
 .overlay.frame {
