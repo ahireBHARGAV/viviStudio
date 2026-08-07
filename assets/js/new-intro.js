@@ -10,7 +10,7 @@ window.addEventListener("load", function () {
     timeline
         .set('.txt1', { color: color1, fontWeight: 'normal', width: 0 }) // Ensure start width 0
         .set('.bar', { backgroundColor: color1 })
-
+        .set('.floating-socials', { opacity: 0, pointerEvents: 'none' })
         .to('.bar', { duration: 0.1, opacity: 0, ease: "expo.in", yoyo: true, repeat: 5, repeatDelay: 0.3 }, 0)
         .to('.txt1', { duration: 1.5, width: "auto", ease: "steps(18)" }, 2.5) // Animate to auto width
         .to('.bar', { duration: 0.5, opacity: 0 }, '+=0.5')
@@ -21,6 +21,7 @@ window.addEventListener("load", function () {
                 document.querySelector('#new-intro-container').style.display = 'none';
             }
         })
+        .to('.floating-socials', { duration: 0.5, opacity: 1, pointerEvents: 'auto' })
         .timeScale(1.45);
 
 });
