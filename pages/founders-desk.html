@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, minimal-ui"
+        name="viewport" />
+
+    <!-- fonts collection -->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400italic,700italic" rel="stylesheet"
+        type="text/css" />
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/bootstrap.extension.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/swiper.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/minimal-cursor.css" rel="stylesheet" type="text/css">
+
+    <link href="../assets/img/favicon.ico" rel="shortcut icon">
+    <title>Founder's Desk - VAVI STUDIOS</title>
+
+    <style>
+        .h1 b,
+        .h2 b,
+        .h3 b,
+        .h4 b,
+        .h5 b,
+        .h6 b,
+        .slide-title b {
+            font-family: 'Cormorant Garamond', serif !important;
+            font-weight: 700 !important;
+            line-height: 1em;
+        }
+
+        footer b {
+            font-family: inherit !important;
+            font-weight: bold !important;
+        }
+
+        /* Founder Section Styles - Mobile First */
+        .founder-section {
+            padding: 60px 15px;
+        }
+
+        .founder-photo-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .founder-photo-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .founder-photo-wrapper:hover img {
+            transform: scale(1.05);
+        }
+
+        .founder-content {
+            padding: 20px 0;
+        }
+
+        .founder-name {
+            margin-bottom: 5px;
+            color: #222;
+        }
+
+        .founder-title {
+            color: #888;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .founder-bio {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: justify;
+            max-height: 450px;
+            overflow-y: auto;
+            padding-right: 15px;
+        }
+
+        .founder-bio::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .founder-bio::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .founder-bio::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .founder-bio::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .founder-contact-box {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #222;
+        }
+
+        .founder-contact-box p {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .founder-contact-box i {
+            margin-right: 10px;
+            color: #555;
+            width: 20px;
+            text-align: center;
+        }
+
+        .founder-contact-box a {
+            color: #222;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .founder-contact-box a:hover {
+            color: #888;
+        }
+
+        /* Desktop Adjustments */
+        @media (min-width: 992px) {
+            .founder-section {
+                padding: 100px 0;
+            }
+
+            .founder-photo-wrapper {
+                margin-bottom: 0;
+            }
+
+            .founder-content {
+                padding: 0 0 0 50px;
+            }
+        }
+    </style>
+</head>
+
+<body class="fonts-aesthetic">
+    <!-- LOADER -->
+    <div id="loader-wrapper"></div>
+
+    <!-- OVERLAY MENU -->
+    <div class="overlay" data-rel="1">
+        <div class="animation-wrapper full-size"></div>
+        <div class="content-wrapper full-size">
+            <div class="cell-view page-height">
+                <div class="container">
+                    <div class="row" style="display:flex; flex-wrap:wrap; align-items:flex-start;">
+                        <div class="col-md-2 col-xs-b30 col-sm-0">
+                            <nav class="text-left clearfix">
+                                <ul>
+                                    <li><a href="../index.html">Home</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="portfolio.html">Portfolio</a></li>
+                                    <li><a href="services.html">Services</a></li>
+                                    <li><a href="testimonial.html">Testimonial</a></li>
+                                    <li><a href="contacts.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-md-offset-1 col-xs-b30 col-sm-0">
+                            <div class="simple-article light transparent col-xs-b30 col-sm-b50">
+                                <div class="h4 small">Capturing Moments, Creating Stories</div>
+                                <div class="empty-space col-xs-b10"></div>
+                                <p>VAVI Studios blends art with emotion, capturing love, life, and stories through the
+                                    lens.</p>
+                            </div>
+                            <div class="simple-article light transparent col-xs-b30 col-sm-b50">
+                                <div class="h4 small">CONTACT INFO</div>
+                                <div class="empty-space col-xs-b10"></div>
+                                <p>Email: <a class="mouseover-simple" href="mailto:vavistudios@gmail.com"
+                                        style="color: #fff;"><b>vavistudios@gmail.com</b></a></p>
+                                <p>Phone: <a class="mouseover-simple" href="tel:+919356404645"
+                                        style="color: #fff;"><b>+91 9356404645</b></a></p>
+                            </div>
+                            <div class="h4 small light">FOLLOW US</div>
+                            <div class="empty-space col-xs-b15"></div>
+                            <div class="follow">
+                                <a class="entry" href="https://www.instagram.com/" target="_blank"><i
+                                        class="fa fa-instagram"></i></a>
+                                <a class="entry" href="https://api.whatsapp.com/send/?phone=919356404645"
+                                    target="_blank"><i class="fa fa-whatsapp"></i></a>
+                                <a class="entry" href="https://share.google/KsFaWvUEdi8qOIjIC"><i
+                                        class="fa fa-google"></i></a>
+                                <a class="entry" href="https://www.youtube.com/channel/UCjlL9fmUwuesODz2xyZZnQw"
+                                    target="_blank"><i class="fa fa-youtube-play"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content-block" class="light-cursor-area">
+        <!-- HEADER -->
+        <header class="type-4 absolute light">
+            <div class="wide-container-fluid">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-2">
+                        <a class="logo" href="../index.html"><img alt="" src="../assets/img/logo1.png" /></a>
+                    </div>
+                    <div class="col-xs-6 col-sm-10 text-right">
+                        <div class="navigation-wrapper">
+                            <a class="logo responsive" href="../index.html"><img alt=""
+                                    src="../assets/img/logo.png" /></a>
+                            <div class="navigation-overflow">
+                                <nav class="text-left clearfix">
+                                    <ul>
+                                        <li><a href="../index.html">Home</a></li>
+                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="services.html">Services</a></li>
+                                        <li><a href="testimonial.html">Testimonial</a></li>
+                                        <li><a href="contacts.html">Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="follow style-1">
+                                <span class="title">Follow us:</span>
+                                <a class="entry" href="https://www.instagram.com/" target="_blank"><i
+                                        class="fa fa-instagram"></i></a>
+                                <a class="entry" href="https://api.whatsapp.com/send/?phone=919356404645"
+                                    target="_blank"><i class="fa fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                        <div class="hamburger-icon open-overlay" data-rel="1">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="close-layer toggle-visibility"></div>
+        </header>
+
+        <!-- HERO BANNER -->
+        <div class="fixed-background"
+            style="background-image: url(../assets/img/founder/hero2.png); background-position: center center;">
+            <div class="page-height" style="height: 60vh;">
+                <div class="full-size-banner-entry full-size valign-middle">
+                    <div class="valign-text-wrapper">
+                        <div class="row">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12 text-center">
+                                        <div class="h1 small light"><b>Founder's Desk</b></div>
+                                        <div class="empty-space col-xs-b15"></div>
+                                        <div class="simple-article large light transparent">Vision, Creativity, and
+                                            Leadership</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOUNDER SECTION -->
+        <div class="container founder-section">
+            <div class="row" style="display: flex; flex-wrap: wrap; align-items: center;">
+                <div class="col-md-5 col-xs-12">
+                    <div class="founder-photo-wrapper">
+                        <!-- Placeholder for founder image -->
+                        <img src="../assets/img/founder/port.jpeg" alt="Anurudha Gangurde - Founder of VAVI Studios">
+                    </div>
+                </div>
+                <div class="col-md-7 col-xs-12">
+                    <div class="founder-content">
+                        <h2 class="h2 founder-name"><b>Anurudha Vaishali Avinash Gangurde</b></h2>
+                        <div class="founder-title">Founder & Creative Director, VAVI STUDIOS</div>
+
+                        <div class="simple-article founder-bio">
+                            <p>Creativity is more than a profession for <b>Anurudha Vaishali Avinash Gangurde</b>—it is
+                                a way of preserving emotions, shaping brands, and transforming ideas into timeless
+                                visual experiences.</p>
+                            <p>As the Founder and Creative Director of <b>VAVI STUDIOS</b>, Anurudha has spent over
+                                <b>five years</b> building one of Nashik's emerging creative production houses,
+                                delivering premium photography, filmmaking, video production, and branding solutions for
+                                individuals, businesses, and organizations.</p>
+                            <p>Armed with an <b>MBA in Information Technology</b>, a <b>Diploma in Video Production</b>,
+                                and multiple professional certifications in <b>Photography, Cinematography, Graphic
+                                    Design, Digital Marketing, Video Editing, Branding, and Creative Media</b>, he
+                                combines strategic thinking with artistic vision to create content that is both visually
+                                compelling and commercially effective.</p>
+                            <p>Throughout his journey, Anurudha has successfully led <b>70+ weddings</b>, produced
+                                commercial campaigns, corporate films, product advertisements, fashion editorials,
+                                portraits, and digital marketing projects. His work reflects a commitment to
+                                authenticity, cinematic storytelling, and meticulous attention to detail, ensuring every
+                                project leaves a lasting impact.</p>
+
+                            <h4 class="h5" style="margin: 25px 0 10px;"><b>Building a Creative Ecosystem</b></h4>
+                            <p>Under his leadership, <b>VAVI STUDIOS</b> has evolved into a creative ecosystem of
+                                specialized brands, each dedicated to a unique aspect of visual storytelling and brand
+                                communication.</p>
+
+                            <h5 style="margin: 15px 0 5px; font-weight: bold; color: #333;">VAVI STUDIOS</h5>
+                            <p style="margin-bottom: 5px;">The flagship production house specializing in:</p>
+                            <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 15px;">
+                                <li>Wedding Photography & Cinematic Films</li>
+                                <li>Commercial Advertisements</li>
+                                <li>Corporate Video Production</li>
+                                <li>Product Photography</li>
+                                <li>Event Coverage</li>
+                                <li>Documentary & Promotional Films</li>
+                                <li>Podcast Production</li>
+                                <li>Studio Productions</li>
+                            </ul>
+
+                            <h5 style="margin: 15px 0 5px; font-weight: bold; color: #333;">MUSE by Anurudha</h5>
+                            <p style="margin-bottom: 5px;">A premium portrait and fashion division dedicated to:</p>
+                            <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 15px;">
+                                <li>Professional Portrait Photography</li>
+                                <li>Model Portfolios</li>
+                                <li>Fashion & Editorial Shoots</li>
+                                <li>Personal Branding Sessions</li>
+                                <li>Creative Concept Photography</li>
+                            </ul>
+
+                            <h5 style="margin: 15px 0 5px; font-weight: bold; color: #333;">ADVITY Media Production</h5>
+                            <p style="margin-bottom: 5px;">A creative agency focused on helping businesses grow through:
+                            </p>
+                            <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 15px;">
+                                <li>Brand Promotion</li>
+                                <li>Content Creation</li>
+                                <li>Digital Marketing</li>
+                                <li>Social Media Management</li>
+                                <li>Commercial Ad Films</li>
+                                <li>Product Campaigns</li>
+                                <li>Creative Strategy & Branding</li>
+                            </ul>
+
+                            <h4 class="h5" style="margin: 25px 0 10px;"><b>Vision</b></h4>
+                            <p>Anurudha believes that powerful visuals have the ability to inspire, connect, and create
+                                lasting memories. His vision is to establish <b>VAVI STUDIOS</b> as one of leading
+                                creative production houses by continuously pushing the boundaries of storytelling,
+                                innovation, and visual excellence.</p>
+                            <p>Every project is approached with passion, precision, and purpose—because every frame
+                                carries a story, and every story deserves to be told beautifully.</p>
+
+                            <h4 class="h5" style="margin: 25px 0 10px;"><b>Highlights</b></h4>
+                            <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 15px;">
+                                <li><b>5+ Years</b> of Professional Experience</li>
+                                <li><b>70+ Weddings</b> Successfully Covered</li>
+                                <li><b>Expertise Across Photography, Filmmaking & Video Production</b></li>
+                                <li><b>Specialized in Brand Promotion, Digital Content & Visual Storytelling</b></li>
+                                <li><b>Founder of VAVI STUDIOS, MUSE by Anurudha & ADVITY Media Production</b></li>
+                            </ul>
+
+                            <blockquote
+                                style="border-left: 4px solid #222; padding-left: 15px; margin: 25px 0; font-style: italic; color: #444;">
+                                "We don't just capture moments—we craft stories that inspire, connect, and stand the
+                                test of time."
+                                <br><br>
+                                <span style="font-style: normal; font-size: 14px; font-weight: bold;">— Anurudha
+                                    Vaishali Avinash Gangurde</span><br>
+                                <span style="font-style: normal; font-size: 12px; color: #888;">Founder & Creative
+                                    Director, VAVI STUDIOS</span>
+                            </blockquote>
+                        </div>
+
+                        <div class="founder-contact-box">
+                            <h4 class="h5" style="margin-bottom: 15px;"><b>Get In Touch</b></h4>
+                            <p><i class="fa fa-envelope"></i> <a
+                                    href="mailto:vavistudios@gmail.com">anugangurde95@gmail.com</a></p>
+                            <p><i class="fa fa-phone"></i> <a href="tel:+919356404645">+91 9356404645</a></p>
+                            <p><i class="fa fa-instagram"></i> <a
+                                    href="https://www.instagram.com/user_addictedd?igsh=cnV5OWZiN2VrZml0"
+                                    target="_blank">@user_addictedd</a></p>
+                            <p style="margin-bottom: 0;"><i class="fa fa-linkedin"></i> <a
+                                    href="https://www.linkedin.com/in/anurudha-gangurde-ba2314255/"
+                                    target="_blank">Anurudha Gangurde</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="empty-space col-xs-b55 col-sm-b110"></div>
+
+        <!-- FOOTER -->
+        <div class="grey-line"></div>
+        <footer class="light">
+            <div class="wide-container-fluid wide-paddings">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="h5 small" style="color: #222;"><b>ADDRESS</b></div>
+                        <div class="empty-space col-xs-b15"></div>
+                        <div class="simple-article small grey">
+                            F-4, Shantiniketan Plaza<br />
+                            College Road<br />
+                            Nashik, MH 422005, India
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 text-right">
+                        <div class="footer-logo" style="margin-bottom: 20px;">
+                            <img src="../assets/img/logo2.png" alt="Logo 2" class="logo-3d" style="max-width: 100px;">
+                        </div>
+                        <div class="follow style-1">
+                            <span class="title" style="color: #222;">Follow us:</span>
+                            <a class="entry" href="https://www.instagram.com/" target="_blank"><i
+                                    class="fa fa-instagram"></i></a>
+                            <a class="entry" href="https://api.whatsapp.com/send/?phone=919356404645" target="_blank"><i
+                                    class="fa fa-whatsapp"></i></a>
+                            <a class="entry" href="https://share.google/KsFaWvUEdi8qOIjIC" target="_blank"><i
+                                    class="fa fa-google"></i></a>
+                            <a class="entry" href="https://www.youtube.com/channel/UCjlL9fmUwuesODz2xyZZnQw"
+                                target="_blank"><i class="fa fa-youtube-play"></i></a>
+                        </div>
+                        <div class="empty-space col-xs-b15"></div>
+                        <div class="copyright">
+                            <div class="simple-article small grey">
+                                &copy; 2025 VAVI Studios. All rights reserved.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../assets/js/jquery-2.1.4.min.js"></script>
+    <script src="../assets/js/swiper.jquery.min.js"></script>
+    <script src="../assets/js/jquery.mousewheel.min.js"></script>
+    <script src="../assets/js/global.js"></script>
+    <script src="../assets/js/minimal-cursor.js"></script>
+</body>
+
+</html>
+
+<
