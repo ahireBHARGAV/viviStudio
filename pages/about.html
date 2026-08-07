@@ -34,9 +34,31 @@
     </link>
     </link>
     <style>
+        .founder-btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
         @media (max-width: 767px) {
             .about-mobile-bg-shift {
                 background-position: 75% center !important;
+            }
+            .founder-btn {
+                width: 100%;
+                padding: 12px 0;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .founder-btn {
+                padding: 12px 150px;
             }
         }
 
@@ -217,7 +239,7 @@
                                             worth remembering. With a candid eye and creative soul, we turn real
                                             emotions into timeless visuals.</div>
                                         <div class="empty-space col-xs-b15"></div>
-                                        <a href="founders-desk.html" class="simple-article large light transparent" style="display: inline-block; padding: 12px 25px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); text-decoration: none; border-radius: 6px; transition: all 0.3s ease;">Meet The Founder</a>
+                                        <a href="founders-desk.html" class="simple-article large light transparent founder-btn">Meet The Founder</a>
                                     </div>
                                 </div>
                             </div>
@@ -245,7 +267,7 @@
                     <div class="title-line" style="text-align: center;"></div>
                     <div class="h3 small" style="text-align: center;"><b>WE CREATE AMAZING THINGS</b></div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 col-xs-b30">
                     <div class="h5"><b>OUR JOURNEY</b></div>
                     <div class="empty-space col-xs-b15"></div>
                     <div class="simple-article grey">
@@ -295,7 +317,7 @@
                     <div class="h3 small" style="text-align: center;"><b>WE BELIEVE EVERY WEDDING IS A STORY, AND WE'RE
                             HERE TO TELL YOURS.</b></div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 col-xs-b30">
                     <div class="h5"><b>OUR APPROACH</b></div>
                     <div class="empty-space col-xs-b15"></div>
                     <div class="simple-article grey">
